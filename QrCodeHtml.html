@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR_Code_Create</title>
+    <script src="qrCode.js"></script>
+    <script>
+      let qrcode = undefined;
+      function generateQRCode(value) {
+        if (qrcode === undefined) {
+          qrcode = new QRCode(document.getElementById("qrcode"), value);
+        } else {
+          qrcode.clear();
+          qrcode.makeCode(value);
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="QrCodeStyle.css" />
+  </head>
+  <body>
+    <h1 class="title">QR kod yasaymiz!</h1>
+    <div class="formDiv">
+      <input
+        type="text"
+        id="linkInput"
+        name="qrcode"
+        id="cod"
+        onchange="generateQRCode(this.value);inputValue()"
+        placeholder="Linkni shu joyga kiriting..."
+      />
+      <button class="button">Yasash</button>
+      <br />
+      <hr class="hr" />
+    </div>
+    <div class="divQR">
+      <div id="qrcode"></div>
+    </div>
+    <script src="./control.js"></script>
+  </body>
+</html>
